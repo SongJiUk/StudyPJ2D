@@ -69,5 +69,7 @@ public class Flappy : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         anim.SetTrigger("Dead");
+        new WaitForSeconds(1f);
+        GameManager.Instance.GameOver();
     }
 }

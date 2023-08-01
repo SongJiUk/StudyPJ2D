@@ -7,16 +7,11 @@ public class MapScroll : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.CompareTag("obstacle"))
-        {
-            //float rand = Random.Range(20f, 30f);
-            //collision.transform.position += new Vector3(rand, 0, 0);
-        }
-        else
+        if(collision.CompareTag("BackGround"))
         {
             collision.transform.position += new Vector3(15f, 0, 0);
-
         }
+       
 
     }
 }
