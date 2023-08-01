@@ -8,7 +8,7 @@ public class ColunmSpawner : MonoBehaviour
     void Start()
     {
         Instantiate(ColumPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        //StartCoroutine(twoSecond());
+        StartCoroutine(twoSecond());
     }
 
     float timer = 0f;
@@ -17,21 +17,22 @@ public class ColunmSpawner : MonoBehaviour
     {
         while(true)
         {
-            new WaitForSeconds(3f);
             float rand = Random.Range(-2f, 2f);
-            Instantiate(ColumPrefab, new Vector3(0, rand, 0), Quaternion.identity);
+            Instantiate(ColumPrefab, new Vector3(transform.position.x, rand, 0), Quaternion.identity);
+            yield return new WaitForSeconds(3f);
         }
+        
     }
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
-        if (timer >= 3f)
-        {
-            float rand = Random.Range(-2f, 2f);
-            Instantiate(ColumPrefab, new Vector3(transform.position.x, rand, 0), Quaternion.identity);
-            timer = 0f;
-        }
+        //if (timer >= 3f)
+        //{
+        //    float rand = Random.Range(-2f, 2f);
+        //    Instantiate(ColumPrefab, new Vector3(transform.position.x, rand, 0), Quaternion.identity);
+        //    timer = 0f;
+        //}
     }
 }
