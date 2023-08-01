@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver_Img.gameObject.SetActive(true);
         Time.timeScale = 0f;
+        
     }
 
 }
