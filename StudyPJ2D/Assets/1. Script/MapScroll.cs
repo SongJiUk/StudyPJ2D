@@ -9,12 +9,12 @@ public class MapScroll : MonoBehaviour
 
         if(collision.CompareTag("obstacle"))
         {
-            float rand = Random.Range(20f, 30f);
-            collision.transform.position += new Vector3(rand, 0, 0);
+            //float rand = Random.Range(20f, 30f);
+            //collision.transform.position += new Vector3(rand, 0, 0);
         }
         else
         {
-            collision.transform.position += new Vector3(20f, 0, 0);
+            collision.transform.position += new Vector3(15f, 0, 0);
 
         }
 
