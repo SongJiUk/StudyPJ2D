@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //프로그램 시작할때 올라감
-
+    //Singleton
     public static GameManager Instance = null;
 
     [SerializeField] Text score_txt;
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {
         score++;
-        score_txt.text = $"점수 : {score}";
+        score_txt.text = $"Score : {score}";
     }
 
     public void GameOver()
@@ -32,4 +31,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+           
+        }
+    }
 }
