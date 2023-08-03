@@ -6,14 +6,9 @@ public class Player : MonoBehaviour
 {
     public static Player instance = null;
 
-    const int MAXBULLET = 100;
-    [SerializeField] Bullet bullet;
-    [SerializeField] GameObject Obj_Pool_Bullet;
     [SerializeField] Transform[] shootPos;
-
-    Queue<Bullet> bullet_que = new Queue<Bullet>();
-
     float Speed = 2f;
+
     //Vector3 dir = Vector3.zero;
     private void Awake()
     {
@@ -23,13 +18,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < MAXBULLET; i++)
-        {
-            var obj = Instantiate(bullet, Obj_Pool_Bullet.transform);
-            obj.gameObject.SetActive(false);
-            bullet_que.Enqueue(obj);
-        }
-
         //취소
         //CancelInvoke();
         //반복 실행 함수
@@ -97,16 +85,11 @@ public class Player : MonoBehaviour
 
         for(int i =0; i<3; i++)
         {
-            var bullet = bullet_que.Dequeue();
+            var bullet = ObjectPool.instance.GetBulletQueue();
             bullet.transform.position = shootPos[i].transform.position;
             bullet.transform.rotation = shootPos[i].transform.rotation;
             bullet.OnBullet();
         }
     }
 
-    public void ReturnQueue(Bullet _bullet)
-    {
-        _bullet.gameObject.SetActive(false);
-        bullet_que.Enqueue(_bullet);
-    }
 }

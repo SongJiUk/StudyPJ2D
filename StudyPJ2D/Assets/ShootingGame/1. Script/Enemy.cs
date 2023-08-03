@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        HP = 5;
+        HP = 2;
         
     }
 
@@ -26,15 +26,17 @@ public class Enemy : MonoBehaviour
         HP--;
         if (HP == 0)
         {
-            Dead();
+            anim.SetTrigger("IsDead");
         }
         else anim.SetTrigger("IsHit");
     }
 
   
 
-    public void Dead()
+    public void Boom()
     {
+        //재활용
+
         Destroy(this.gameObject);
     }
 }

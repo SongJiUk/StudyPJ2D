@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            Player.instance.ReturnQueue(this);
+            ObjectPool.instance.ReturnQueue(this);
         }
     }
 
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
             pos = transform.position;
             if (pos.y > max.y)
             {
-                Player.instance.ReturnQueue(this);
+                ObjectPool.instance.ReturnQueue(this);
                 StopCoroutine(CheckBullet());
                 
             }
