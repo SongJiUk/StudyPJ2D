@@ -7,43 +7,57 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rigid;
-    float speed = 4f;
+    float playerspeed = 8f;
+    float enemyspeed = 0.5f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+
+    public void OnBullet(string _name)
     {
-        if(collision.CompareTag("Enemy"))
-        {
-            ObjectPool.instance.ReturnQueue(this);
-        }
-    }
-
-    public void OnBullet()
-    {
-        this.gameObject.SetActive(true);
-
         //Vector3.up - 월드 좌표
         //transform.up - 비스듬하게 해놔도 앞으로 쭉감
-        rigid.velocity = transform.up * speed;
-        StartCoroutine(CheckBullet());
+
+        switch(_name)
+        {
+            case "Player":
+                rigid.velocity = transform.up * playerspeed;
+                break;
+
+            case "Enemy":
+                rigid.velocity = -transform.up * enemyspeed;
+                break;
+        }
+        //StartCoroutine(CheckBullet(_name));
     }
 
-    IEnumerator CheckBullet()
+    IEnumerator CheckBullet(string s = "Player")
     {
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector3 pos = transform.position;
 
         while (true)
         {
             yield  return new WaitForSeconds(0.1f);
 
-            pos = transform.position;
-            if (pos.y > max.y)
+            if(s.Equals("Player"))
             {
-                ObjectPool.instance.ReturnQueue(this);
-                StopCoroutine(CheckBullet());
-                
+                pos = transform.position;
+                if (pos.y > max.y)
+                {
+                    ObjectPool.instance.ReturnQueue(this, s);
+                    StopCoroutine(CheckBullet());
+                }
             }
-            
+            else
+            {
+                pos = transform.position;
+                if (pos.y < min.y)
+                {
+                    ObjectPool.instance.ReturnQueue(this, s);
+                    StopCoroutine(CheckBullet());
+                }
+            }
         }
     }
 }

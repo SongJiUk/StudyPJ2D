@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : SpaceShip
 {
     public static Player instance = null;
 
-    [SerializeField] Transform[] shootPos;
     float Speed = 2f;
 
     //Vector3 dir = Vector3.zero;
@@ -23,15 +22,22 @@ public class Player : MonoBehaviour
         //반복 실행 함수
         //InvokeRepeating("Fire", 0, 0.5f);
         //Invoke("dd", 2f);
-
+        //shootPos = new Transform[transform.childCount];
+        HP = 10;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Hit();
+    }
+
 
     void Update()
     {
         Move();
 
         if(Input.GetKeyDown(KeyCode.Space))
-        {
+        {                           
             Fire();
         }
     }
@@ -80,16 +86,6 @@ public class Player : MonoBehaviour
         transform.position = pos;
     }
 
-    public void Fire()
-    {
-
-        for(int i =0; i<3; i++)
-        {
-            var bullet = ObjectPool.instance.GetBulletQueue();
-            bullet.transform.position = shootPos[i].transform.position;
-            bullet.transform.rotation = shootPos[i].transform.rotation;
-            bullet.OnBullet();
-        }
-    }
+    
 
 }

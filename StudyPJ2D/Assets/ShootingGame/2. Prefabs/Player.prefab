@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7931331881717761640}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos_Left
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7931331882293617992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos_Center
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -72,11 +72,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7931331883182619086}
   - component: {fileID: 7931331883182619087}
-  - component: {fileID: 7931331883182619085}
   - component: {fileID: 7931331883182619084}
-  - component: {fileID: 7931331883182619083}
   - component: {fileID: 7931331883182619082}
-  m_Layer: 0
+  - component: {fileID: 1094406542}
+  - component: {fileID: 7931331883182619085}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,24 +153,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7931331883182619085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7931331883182619072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec016d42660474835961b15c26cd4d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3834306187226142881, guid: 31175206e8f85483ca305486809ce966, type: 3}
-  Obj_Pool_Bullet: {fileID: 0}
-  shootPos:
-  - {fileID: 7931331882293617992}
-  - {fileID: 7931331881717761640}
-  - {fileID: 7931331883548340858}
 --- !u!50 &7931331883182619084
 Rigidbody2D:
   serializedVersion: 4
@@ -192,32 +174,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7931331883182619083
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7931331883182619072}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0071905553, y: -0.050333977}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
-    newSize: {x: 0.96, y: 0.96}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6196465, y: 0.8593321}
-  m_EdgeRadius: 0
 --- !u!95 &7931331883182619082
 Animator:
   serializedVersion: 5
@@ -239,6 +195,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &1094406542
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931331883182619072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.39
+--- !u!114 &7931331883182619085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931331883182619072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec016d42660474835961b15c26cd4d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootPos:
+  - {fileID: 7931331882293617992}
+  - {fileID: 7931331881717761640}
+  - {fileID: 7931331883548340858}
+  anim: {fileID: 7931331883182619082}
 --- !u!1 &7931331883548340859
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7931331883548340858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos_Right
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}

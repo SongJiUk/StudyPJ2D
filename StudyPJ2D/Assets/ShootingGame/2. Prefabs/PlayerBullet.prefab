@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5592202759590706368}
   - component: {fileID: 5592202759590706371}
   - component: {fileID: 9009505844824877394}
+  - component: {fileID: 7866471731877771831}
   - component: {fileID: 178442207176591572}
-  - component: {fileID: 3834306187226142881}
-  m_Layer: 0
-  m_Name: RetroBullet
+  m_Layer: 7
+  m_Name: PlayerBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +113,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &7866471731877771831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592202759590706370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7edd29d4f8a84f3f86629b40b976e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 178442207176591572}
 --- !u!50 &178442207176591572
 Rigidbody2D:
   serializedVersion: 4
@@ -134,16 +147,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3834306187226142881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5592202759590706370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcbf2ff22382148f2abf1e869687b59e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigid: {fileID: 178442207176591572}

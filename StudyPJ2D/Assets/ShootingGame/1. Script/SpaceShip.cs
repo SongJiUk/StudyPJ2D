@@ -2,32 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//값 저장! 
-struct TestPoint
-{
-    public int a;
-    public int b;
-}
-
-//클래스는 안써줘도 ref.
 public class SpaceShip : MonoBehaviour
 {
+    [SerializeField] protected Transform[] shootPos;
+    [SerializeField] protected Animator anim;
 
-    void TestFct(ref TestPoint point)
+    private int hp;
+    public int HP
     {
-
+        get;
+        set;
     }
 
-    void Start()
+    public void Fire()
     {
-        TestPoint point;
-        point.a = 1;
+        for (int i = 0; i < 3; i++)
+        {
+            var bullet = ObjectPool.instance.GetBulletQueue("Player");
+            bullet.gameObject.SetActive(true);
+            bullet.transform.position = shootPos[i].transform.position;
+            bullet.transform.rotation = shootPos[i].transform.rotation;
+            bullet.OnBullet("Player");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hit()
     {
-        
+        HP--;
+        if (HP == 0)
+        {
+            //var ex = ObjectPool.instance.GetExplosion();
+            //ex.transform.position = this.transform.position;
+            //Destroy(this.gameObject);
+            gameObject.SetActive(false);
+        }
+        else anim.SetTrigger("IsHit");
     }
+
 }
