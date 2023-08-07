@@ -19,7 +19,22 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    IEnumerator Start()
+    private void OnDisable()
+    {
+        StopCoroutine(WaveStart());
+        for(int i =0; i<waveScripts.Length; i++)
+        {
+            waveScripts[i].SetActive(false);
+        }
+
+    }
+    private void OnEnable()
+    {
+        currentMove = 0;
+        StartCoroutine(WaveStart());
+    }
+
+    IEnumerator WaveStart()
     { 
         if (waveScripts.Length == 0)
             yield break;
@@ -43,4 +58,6 @@ public class WaveManager : MonoBehaviour
             if (currentMove == 0) break;
         }
     }
+
+    
 }

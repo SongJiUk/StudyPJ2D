@@ -10,7 +10,7 @@ public class ScoreUp : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            if(GameManager.Instance != null) GameManager.Instance.AddScore();
+            //if(GameManager.Instance != null) GameManager.Instance.AddScore();
         }
         
     }

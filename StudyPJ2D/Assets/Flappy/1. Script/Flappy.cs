@@ -70,6 +70,6 @@ public class Flappy : MonoBehaviour
     {
         anim.SetTrigger("Dead");
         new WaitForSeconds(1f);
-        GameManager.Instance.GameOver();
+        //GameManager.Instance.GameOver();
     }
 }

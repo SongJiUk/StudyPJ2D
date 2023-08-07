@@ -34,6 +34,7 @@ public class SpaceShip : MonoBehaviour
             //var ex = ObjectPool.instance.GetExplosion();
             //ex.transform.position = this.transform.position;
             //Destroy(this.gameObject);
+            GameManager.instance.AddScore(1);
             gameObject.SetActive(false);
         }
         else anim.SetTrigger("IsHit");

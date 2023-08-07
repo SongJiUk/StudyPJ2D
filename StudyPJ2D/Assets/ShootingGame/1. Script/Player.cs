@@ -15,6 +15,10 @@ public class Player : SpaceShip
         else Destroy(this.gameObject);
     }
 
+    private void OnEnable()
+    {
+        HP = 1;
+    }
     private void Start()
     {
         //취소
@@ -23,7 +27,7 @@ public class Player : SpaceShip
         //InvokeRepeating("Fire", 0, 0.5f);
         //Invoke("dd", 2f);
         //shootPos = new Transform[transform.childCount];
-        HP = 10;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,6 +35,20 @@ public class Player : SpaceShip
         Hit();
     }
 
+    public void Hit()
+    {
+        HP--;
+        if (HP == 0)
+        {
+            //var ex = ObjectPool.instance.GetExplosion();
+            //ex.transform.position = this.transform.position;
+            //Destroy(this.gameObject);
+
+            GameManager.instance.Restart();
+            gameObject.SetActive(false);
+        }
+        else anim.SetTrigger("IsHit");
+    }
 
     void Update()
     {
@@ -86,6 +104,5 @@ public class Player : SpaceShip
         transform.position = pos;
     }
 
-    
 
 }
